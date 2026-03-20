@@ -1,0 +1,32 @@
+{
+  "name": "@nilesh-padiyar/pwgen",
+  "version": "1.0.0",
+  "description": "Command-line password generator: secure, flexible, copy-ready",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "pwgen": "dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nilesh-padiyar/pwgen"
+  },
+  "homepage": "https://github.com/nilesh-padiyar/pwgen#readme",
+  "keywords": ["password", "password-generator", "pwgen", "CLI"],
+  "author": "Niles Padiyar",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^25.3.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "cac": "^7.0.0",
+    "clipboardy": "^5.3.1"
+  },
+  "type": "commonjs"
+}
