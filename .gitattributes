@@ -1,5 +1,6 @@
 * linguist-language=TypeScript
 *.md linguist-vendored
 *.json linguist-vendored
+*.txt linguist-vendored
 dist/** linguist-vendored
 node_modules/** linguist-vendored

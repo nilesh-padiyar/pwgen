@@ -1,3 +1,4 @@
+// src/utils/charset.ts
 export const CHARSET_NUM = `123456789`;
 export const CHARSET_ALPHA_LOWER = `abcdefghijkmnopqrstuvwxyz`;
 export const CHARSET_ALPHA_UPPER = `ABCDEFGHJKLMNPRSTUVWXYZ`;

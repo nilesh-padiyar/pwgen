@@ -1,16 +1,27 @@
 {
   "compilerOptions": {
+    
     "types": ["node"],
-    "module": "NodeNext",
     "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    
     "rootDir": "./src",
     "outDir": "./dist",
+    
     "esModuleInterop": true,
+    "resolveJsonModule": true,
+    
     "strict": true,
     "noEmitOnError": true,
+    
     "removeComments": true,
+    
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true, 
+    
+    "forceConsistentCasingInFileNames": true
+    
   }
 }

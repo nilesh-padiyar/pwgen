@@ -9,10 +9,12 @@ Thumbs.db
 *.log
 .vscode
 .idea
+.zed
+.zed-editor
 
 #environment variables
-.env
 coverage
 
 #build output
 dist
+diceware.txt

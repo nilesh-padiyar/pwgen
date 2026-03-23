@@ -1,28 +1,67 @@
-# pwgen
+# pwgen 🔐
 
-**pwgen** is a CLI tool to generate cryptographically secure passwords with customizable character sets.
-It can optionally copy the generated password to your clipboard. Built with TypeScript and Node.js.
+[**pwgen**](https://www.npmjs.com/package/@nilesh-padiyar/pwgen) is a fast, secure CLI tool for generating passwords and passphrases directly from your terminal.
 
----
-
-# Features
-
-- Generate secure passwords of any length
-- Include/exclude numbers, lowercase, uppercase, and special characters
-- Copy password directly to clipboard (--copy / -c)
-- Fully CLI-based, lightweight, fast
+Built with **Node.js + TypeScript**, it uses cryptographically secure randomness and supports both traditional **character-based** passwords and modern **Diceware passphrases**.
 
 ---
 
-# Prerequisites
+## ✨ Features
 
-Before installing ```pwgen```, make sure you have:
+### 🔐 Password Generation
 
-- [Node.js](https://nodejs.org/) (version 14 or higher recommended)
-- npm (comes with Node.js)
+* Generate secure passwords of any length
+* Fully customizable character sets:
+
+  * Numbers
+  * Lowercase
+  * Uppercase
+  * Symbols
+
+### 🎲 Diceware Passphrases *(v1.1.0)*
+
+* Generate human-readable, secure passphrases
+* Custom word count and separators
+* Optional capitalization
+
+### 🧠 Entropy & Strength Analysis *(v1.1.0)*
+
+* Calculate password entropy (in bits)
+* Classify strength: Weak → Very Strong
+* Optional `--stats` flag to display analysis
+
+### 📋 Clipboard Support
+
+* Copy generated passwords directly to clipboard
+
+Clipboard support works reliably on **Windows** and **macOS**.
+
+> ⚠️ On some **Linux** systems (especially Wayland), the CLI may appear to hang after copying.
+> The password is usually copied successfully. Press `Ctrl + C` to exit if needed.
+
+### ⚡ CLI First
+
+* Lightweight and fast
+* Simple, developer-friendly commands
+
+---
+
+## 📦 Installation
+
+```bash
+npm install -g @nilesh-padiyar/pwgen
+```
 
 
-Check versions in terminal:
+**NOTE:-**
+
+Before installing, make sure you have:
+
+1. [**Node.js**](https://nodejs.org) (version 14 or higher recommended)
+2. **npm** (comes with Node.js)
+
+Check versions in terminal: 
+
 ```bash
 node -v #Node.js version check
 npm -v  #npm version check
@@ -30,37 +69,106 @@ npm -v  #npm version check
 
 ---
 
-# Installation
+## 🚀 Usage
+
+### 🔐 Generate Passwords (Character-Based)
 
 ```bash
-npm install -g @nilesh-padiyar/pwgen
-```
+# Default (10 chars)
+pwgen generate
 
-After installing, you can run:
-```bash
-pwgen generate --help
-```
+# Custom length
+pwgen generate -L 20
 
----
+# Show entropy & strength
+pwgen generate --stats
 
-# Usage Examples
+# Copy to clipboard
+pwgen generate -c
 
-```bash
-# Generate a 16-character password with letters and numbers
-pwgen generate -L 16 -n -l -u
-
-# Generate a 20-character password and copy to clipboard
-pwgen generate -L 20 -c
-
-# Disable uppercase and symbols
+# Disable specific character sets
 pwgen generate -L 12 --no-u --no-s
 ```
 
+**Example Output:**
+
+```bash
+FEP39S$vA*
+Entropy: 63.58 bits
+Strength: Medium
+```
+
 ---
 
-# Development Setup
+### 🎲 Generate Diceware Passphrases
 
-If you want to work on project:
+```bash
+# Default (5 words)
+pwgen diceware
+
+# Custom word count
+pwgen diceware -w 4
+
+# Show entropy & strength
+pwgen diceware --stats
+
+# Custom separator
+pwgen diceware -w 4 -s "_"
+
+# Capitalized words
+pwgen diceware -w 5 -C
+
+# Copy to clipboard
+pwgen diceware -c
+```
+
+**Example output:**
+
+```bash
+orbit-ember-shadow-tiger-forest
+Entropy: 64.62 bits
+Strength: Medium
+```
+
+---
+
+## 🧠 Why pwgen?
+
+* Uses **Node.js crypto module** for secure randomness
+* Designed for developers who prefer terminal workflows
+* Provides **transparent security metrics (entropy + strength)**
+* Supports both:
+
+  * 🔑 Strong random passwords
+  * 🧠 Memorable passphrases
+
+---
+
+## ⚙️ CLI Options
+
+### `generate`
+
+* `-L, --length <length>` → Password length (default: 10)
+* `-n, --numbers` → Include numbers
+* `-l, --lowercase` → Include lowercase
+* `-u, --uppercase` → Include uppercase
+* `-s, --special` → Include symbols
+* `-c, --copy` → Copy to clipboard
+* `--stats` → Show entropy and strength
+
+---
+
+### `diceware`
+
+* `-w, --words <number>` → Number of words (default: 5)
+* `-s, --separator <sep>` → Separator (default: "-")
+* `-C, --capitalize` → Capitalize words
+* `-c, --copy` → Copy to clipboard
+* `--stats` → Show entropy and strength
+
+---
+
+## 🛠 Development
 
 ```bash
 git clone https://github.com/nilesh-padiyar/pwgen.git
@@ -77,26 +185,24 @@ node dist/index.js
 
 ---
 
-# Using Locally (Optional)
+## 🔗 Use Locally (Optional)
 
 ```bash
 npm link
 pwgen generate
 ```
 
----
-
-# CLI Configuration
+**CLI Configuration:** 
 
 Make sure your ```package.json``` includes:
 
 ```json
 "bin": {
-  "pwgen": "dist/index.js"
+    "pwgen": "dist/index.js"
 }
 ```
 
-And your entry file starts with shebang:
+And you entry file (index.js) starts with shebang:
 
 ```ts
 #!/usr/bin/env node
@@ -104,7 +210,7 @@ And your entry file starts with shebang:
 
 ---
 
-# Updating
+## 🔄 Update
 
 ```bash
 npm update -g @nilesh-padiyar/pwgen
@@ -112,39 +218,36 @@ npm update -g @nilesh-padiyar/pwgen
 
 ---
 
-# Tech Stack
+## 🧱 Tech Stack
 
-- TypeScript – for type safety and modern JavaScript features
-- Node.js – runtime environment for CLI execution
-- CAC – lightweight CLI framework for commands and options
-- clipboardy – cross-platform clipboard integration
-- tsc (TypeScript Compiler) – compiles TypeScript into JavaScript
-- npm scripts – for building, running, and testing locally
-- Git – version control for source code management
+* TypeScript
+* Node.js
+* CAC (CLI framework)
+* clipboardy
+* chalk
+* Node.js crypto module
 
 ---
 
-# Contributing
+## 🤝 Contributing
 
 Contributions are welcome!
 
 1. Fork the repository
 2. Create a feature branch
-3.  Make your changes
+3. Make your changes
 4. Submit a pull request
 
-Please keep commits clean and meaningful.
+---
+
+## 📄 License
+
+**MIT** — free to use, modify, and distribute
 
 ---
 
-# License
+## 👨‍💻 Author
 
-**MIT** — free to use, modify and distribute
-
----
-
-# Author
-
-[**Nilesh Padiyar**](https://github.com/nilesh-padiyar/)
+[**Nilesh Padiyar**](https://github.com/nilesh-padiyar)
 
 ---

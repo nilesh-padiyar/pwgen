@@ -1,3 +1,4 @@
+// src/utils/validator.ts
 export function validateLength(length: number, min: number, max: number) {
   if (length < min || length > max) {
     throw new Error(`Password length must be between ${min} and ${max}`);
