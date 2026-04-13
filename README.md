@@ -78,13 +78,13 @@ npm -v  #npm version check
 pwgen generate
 
 # Custom length
-pwgen generate -L 20
+pwgen gen -L 20
 
 # Show entropy & strength
 pwgen generate --stats
 
 # Copy to clipboard
-pwgen generate -c
+pwgen g -c
 
 # Disable specific character sets
 pwgen generate -L 12 --no-u --no-s
@@ -107,16 +107,16 @@ Strength: Medium
 pwgen diceware
 
 # Custom word count
-pwgen diceware -w 4
+pwgen dice -w 4
 
 # Show entropy & strength
 pwgen diceware --stats
 
 # Custom separator
-pwgen diceware -w 4 -s "_"
+pwgen d -w 4 -s "_"
 
 # Capitalized words
-pwgen diceware -w 5 -C
+pwgen dice -w 5 -C
 
 # Copy to clipboard
 pwgen diceware -c
